@@ -36,6 +36,9 @@
             description="%dataTransfer.producer.stream.description"
             settings="org.jkiss.dbeaver.tools.transfer.stream.StreamProducerSettings">
 
+
+
+
             <processor
                 id="stream.csv"
                 class="org.jkiss.dbeaver.tools.transfer.stream.importer.DataImporterCSV"
@@ -72,20 +75,6 @@
               description="%dataTransfer.consumer.stream.description"
               settings="org.jkiss.dbeaver.tools.transfer.stream.StreamConsumerSettings">
 
-
-            <processor
-        id="stream.geojson"
-        class="org.jkiss.dbeaver.tools.transfer.stream.exporter.DataExporterGeoJSON"
-        description="Export data as GeoJSON FeatureCollection"
-        icon="icons/formats/json.png"
-        label="GeoJSON"
-        contentType="application/geo+json">
-        <propertyGroup label="General">
-            <!-- Optional properties could be defined here -->
-        </propertyGroup>
-    </processor>
-
-
             <processor
                     id="stream.xml"
                     class="org.jkiss.dbeaver.tools.transfer.stream.exporter.DataExporterXML"
@@ -114,6 +103,27 @@
                 </propertyGroup>
             </processor>
             <processor
+    id="stream.geojson"
+    class="org.jkiss.dbeaver.tools.transfer.stream.exporter.DataExporterGeoJSON"
+    description="Export data as GeoJSON"
+    icon="icons/formats/geojson.png"
+    label="Geo JSON"
+    contentType="application/geo+json">
+    <propertyGroup label="%dataTransfer.processor.geojson.propertyGroup.general.label">
+        <property id="printTableName" label="%dataTransfer.processor.geojson.property.printTableName.label"
+                  type="boolean" defaultValue="true" validValues="true,false"/>
+        <property id="formatDateISO" label="%dataTransfer.processor.geojson.property.formatDateISO.label"
+                  type="boolean" defaultValue="true" validValues="true,false"/>
+        <property id="geometryColumn" label="%dataTransfer.processor.geojson.property.geometryColumn.label"
+                  type="string" defaultValue="geometry"/>
+        <property id="coordinateSystem" label="%dataTransfer.processor.geojson.property.coordinateSystem.label"
+                  type="string" defaultValue="WGS84"/>
+        <property id="includeFeatureId" label="%dataTransfer.processor.geojson.property.includeFeatureId.label"
+                  type="boolean" defaultValue="true" validValues="true,false"/>
+        <property id="extension" label="%dataTransfer.processor.geojson.property.extension.label" defaultValue="geojson"/>
+    </propertyGroup>
+</processor>
+            <processor
                     id="stream.json"
                     class="org.jkiss.dbeaver.tools.transfer.stream.exporter.DataExporterJSON"
                     description="%dataTransfer.processor.json.description"
@@ -130,9 +140,6 @@
                     <property id="extension" label="%dataTransfer.processor.json.property.extension.label" defaultValue="json"/>
                 </propertyGroup>
             </processor>
-
-            
-
             <processor
                     id="stream.html"
                     class="org.jkiss.dbeaver.tools.transfer.stream.exporter.DataExporterHTML"
@@ -151,29 +158,6 @@
                     <property id="extractImages" label="%dataTransfer.processor.html.property.images.name" type="boolean" description="%dataTransfer.processor.html.property.images.description" defaultValue="true"/>
                 </propertyGroup>
             </processor>
-
-
-             <processor
-                    id="stream.html"
-                    class="org.jkiss.dbeaver.tools.transfer.stream.exporter.DataExporterHTML"
-                    description="%dataTransfer.processor.html.description"
-                    icon="icons/formats/html.png"
-                    label="%dataTransfer.processor.html.name"
-                    appFileExtension="html"
-                    appName="%dataTransfer.processor.web.name"
-                    html="true"
-                    order="20"
-                    contentType="text/html">
-                <propertyGroup label="%dataTransfer.processor.html.propertyGroup.general.label">
-                    <property id="extension" label="%dataTransfer.processor.html.property.extension.label" defaultValue="html"/>
-                    <property id="tableHeader" label="%dataTransfer.processor.html.property.header.name" type="boolean" description="%dataTransfer.processor.html.property.header.description" defaultValue="true"/>
-                    <property id="columnHeaders" label="%dataTransfer.processor.html.property.columnHeaders.name" type="boolean" description="%dataTransfer.processor.html.property.columnHeaders.description" defaultValue="true"/>
-                    <property id="extractImages" label="%dataTransfer.processor.html.property.images.name" type="boolean" description="%dataTransfer.processor.html.property.images.description" defaultValue="true"/>
-                </propertyGroup>
-            </processor>
-
-
-
             <processor
                     id="stream.csv"
                     class="org.jkiss.dbeaver.tools.transfer.stream.exporter.DataExporterCSV"
@@ -336,9 +320,6 @@
             <objectType name="org.eclipse.core.resources.IFile"/>
         </task>
     </extension>
-    </extension>
-</extension>
-
 
     <extension point="org.jkiss.dbeaver.serialize">
         <serializer id="databaseTransferProducer"

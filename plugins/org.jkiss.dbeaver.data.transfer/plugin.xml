@@ -116,6 +116,9 @@
                     <property id="extension" label="%dataTransfer.processor.json.property.extension.label" defaultValue="json"/>
                 </propertyGroup>
             </processor>
+
+            
+
             <processor
                     id="stream.html"
                     class="org.jkiss.dbeaver.tools.transfer.stream.exporter.DataExporterHTML"
@@ -134,6 +137,29 @@
                     <property id="extractImages" label="%dataTransfer.processor.html.property.images.name" type="boolean" description="%dataTransfer.processor.html.property.images.description" defaultValue="true"/>
                 </propertyGroup>
             </processor>
+
+
+             <processor
+                    id="stream.html"
+                    class="org.jkiss.dbeaver.tools.transfer.stream.exporter.DataExporterHTML"
+                    description="%dataTransfer.processor.html.description"
+                    icon="icons/formats/html.png"
+                    label="%dataTransfer.processor.html.name"
+                    appFileExtension="html"
+                    appName="%dataTransfer.processor.web.name"
+                    html="true"
+                    order="20"
+                    contentType="text/html">
+                <propertyGroup label="%dataTransfer.processor.html.propertyGroup.general.label">
+                    <property id="extension" label="%dataTransfer.processor.html.property.extension.label" defaultValue="html"/>
+                    <property id="tableHeader" label="%dataTransfer.processor.html.property.header.name" type="boolean" description="%dataTransfer.processor.html.property.header.description" defaultValue="true"/>
+                    <property id="columnHeaders" label="%dataTransfer.processor.html.property.columnHeaders.name" type="boolean" description="%dataTransfer.processor.html.property.columnHeaders.description" defaultValue="true"/>
+                    <property id="extractImages" label="%dataTransfer.processor.html.property.images.name" type="boolean" description="%dataTransfer.processor.html.property.images.description" defaultValue="true"/>
+                </propertyGroup>
+            </processor>
+
+
+
             <processor
                     id="stream.csv"
                     class="org.jkiss.dbeaver.tools.transfer.stream.exporter.DataExporterCSV"
@@ -296,6 +322,9 @@
             <objectType name="org.eclipse.core.resources.IFile"/>
         </task>
     </extension>
+    </extension>
+</extension>
+
 
     <extension point="org.jkiss.dbeaver.serialize">
         <serializer id="databaseTransferProducer"

@@ -72,6 +72,20 @@
               description="%dataTransfer.consumer.stream.description"
               settings="org.jkiss.dbeaver.tools.transfer.stream.StreamConsumerSettings">
 
+
+            <processor
+        id="stream.geojson"
+        class="org.jkiss.dbeaver.tools.transfer.stream.exporter.DataExporterGeoJSON"
+        description="Export data as GeoJSON FeatureCollection"
+        icon="icons/formats/json.png"
+        label="GeoJSON"
+        contentType="application/geo+json">
+        <propertyGroup label="General">
+            <!-- Optional properties could be defined here -->
+        </propertyGroup>
+    </processor>
+
+
             <processor
                     id="stream.xml"
                     class="org.jkiss.dbeaver.tools.transfer.stream.exporter.DataExporterXML"

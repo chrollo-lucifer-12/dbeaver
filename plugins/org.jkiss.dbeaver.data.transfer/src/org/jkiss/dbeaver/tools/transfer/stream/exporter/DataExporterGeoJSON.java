@@ -87,11 +87,9 @@ public class DataExporterGeoJSON extends StreamExporterAbstract implements IDocu
         PrintWriter out = getWriter();
         try {
             if (value instanceof byte[] bytes) {
-                // Output base64 if binary, since we can’t decode WKB to GeoJSON without JTS
                 String base64 = Base64.getEncoder().encodeToString(bytes);
                 out.write("\"WKB_BINARY_BASE64:" + escape(base64) + "\"");
             } else if (value instanceof String str) {
-                // Possibly hex string — just print as string
                 out.write("\"WKB_HEX:" + escape(str.trim()) + "\"");
             } else if (value instanceof DBDContent content) {
                 try (InputStream in = content.getContents(session.getProgressMonitor()).getContentStream()) {
@@ -103,7 +101,7 @@ public class DataExporterGeoJSON extends StreamExporterAbstract implements IDocu
                 out.write("null");
             }
         } catch (Exception e) {
-            out.write("null"); // fallback
+            out.write("null"); 
         }
     }
 
